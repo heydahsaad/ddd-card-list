@@ -5,7 +5,6 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import "./ddd-card.js";
 
 /**
  * `ddd-card-list`
@@ -13,19 +12,22 @@ import "./ddd-card.js";
  * @demo index.html
  * @element ddd-card-list
  */
-export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
+export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
 
   static get tag() {
-    return "ddd-card-list";
+    return "ddd-card";
   }
 
   constructor() {
     super();
+    this.img = "";
+    this.link ="";
+    this.desc="";
     this.title = "";
     this.t = this.t || {};
     this.t = {
       ...this.t,
-      title: "/",
+      title: "Title",
     };
     this.registerLocalization({
       context: this,
@@ -41,6 +43,9 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      link: {type: String},
+      image: {type:String},
+      description: {type:String}
     };
   }
 
@@ -48,36 +53,47 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
   static get styles() {
     return [super.styles,
     css`
+        .host{
+            display: flex;
+            flex-wrap: wrap;
+        }
 
-      :host{
-        display:inline-block;
-        background-color:;
-      }
+        img {
+        display: flex;
+        padding: 16px;
+        max-width: 200px;
+        height: auto;
+        }
 
-      /* .wrapper {
-        margin: var(--ddd-spacing-2);
-        padding: var(--ddd-spacing-4);
-        background-color: white;
-      } */
-      /* h3 span {
-        font-size: var(--ddd-card-list-label-font-size, var(--ddd-font-size-s)); */
-      /* } */
+        .wrapper{
+          display: grid;
+          place-items: center;
+          padding: 6px;
+          margin: 10px;
+          border: 5px solid;
+          border-radius: 10px;
+          border-color: white;
+        }
+
+        .title{
+          align-content: center;
+          padding:6px;
+        }
     `];
   }
 
   // Lit render the HTML
   render() {
     return html`
-      <div>
-      <ddd-card image="" 
-        title="Card 1" link="https://psu.edu.com">
-      </ddd-card>
-      <ddd-card image="" 
-        title="Card 1" link="https://psu.edu.com">
-      </ddd-card>
+      <div class="wrapper">
+        <h2>What campus is this</h2>
+        <img src=${this.image}>
+        <h2 class="title">${this.title}</h2>
+        <p>${this.desc}</p>
+        <p>${this.link}</p>
       </div>
       `;
-  }
+  } 
 
   /**
    * haxProperties integration via file reference
@@ -88,4 +104,4 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
   }
 }
 
-globalThis.customElements.define(DddCardList.tag, DddCardList);
+globalThis.customElements.define(DddCard.tag, DddCard);
