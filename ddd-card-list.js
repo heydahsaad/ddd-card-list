@@ -22,18 +22,21 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "";
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "/",
-    };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/ddd-card-list.ar.json", import.meta.url).href +
-        "/../",
-      locales: ["ar", "es", "hi", "zh"],
-    });
+    this.image = "";
+    this.description = "";
+
+    // this.t = this.t || {};
+    // this.t = {
+    //   ...this.t,
+    //   title: "",
+    // };
+    // this.registerLocalization({
+    //   context: this,
+    //   localesPath:
+    //     new URL("./locales/ddd-card-list.ar.json", import.meta.url).href +
+    //     "/../",
+    //   locales: ["ar", "es", "hi", "zh"],
+    // });
   }
 
   // Lit reactive properties
@@ -41,6 +44,8 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      image: { type: String },
+      description: { type: String },
     };
   }
 
@@ -50,15 +55,18 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
     css`
 
       :host{
-        display:inline-block;
-        background-color:;
+          display: grid;
+          border: 1px solid var(--ddd-border-color, green); //ini apa sia
+          border-radius: var(--ddd-border-radius, 8px);
+          padding: var(--ddd-spacing-3);
       }
 
-      /* .wrapper {
+      .wrapper {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
-        background-color: white;
-      } */
+        background-color: white; //the whole damn background
+      }
+
       /* h3 span {
         font-size: var(--ddd-card-list-label-font-size, var(--ddd-font-size-s)); */
       /* } */
@@ -68,13 +76,8 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html`
-      <div>
-      <ddd-card image="" 
-        title="Card 1" link="https://psu.edu.com">
-      </ddd-card>
-      <ddd-card image="" 
-        title="Card 1" link="https://psu.edu.com">
-      </ddd-card>
+      <div class="wrapper">
+        <slot></slot>
       </div>
       `;
   }

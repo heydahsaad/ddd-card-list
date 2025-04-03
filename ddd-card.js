@@ -24,18 +24,20 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
     this.link ="";
     this.desc="";
     this.title = "";
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/ddd-card-list.ar.json", import.meta.url).href +
-        "/../",
-      locales: ["ar", "es", "hi", "zh"],
-    });
+
+
+    // this.t = this.t || {};
+    // this.t = {
+    //   ...this.t,
+    //   title: "Title",
+    // };
+    // this.registerLocalization({
+    //   context: this,
+    //   localesPath:
+    //     new URL("./locales/ddd-card-list.ar.json", import.meta.url).href +
+    //     "/../",
+    //   locales: ["ar", "es", "hi", "zh"],
+    // });
   }
 
   // Lit reactive properties
@@ -45,7 +47,7 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
       title: { type: String },
       link: {type: String},
       image: {type:String},
-      description: {type:String}
+      desc: {type:String}
     };
   }
 
@@ -54,8 +56,12 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
     return [super.styles,
     css`
         .host{
-            display: flex;
-            flex-wrap: wrap;
+          display: block;
+          border: 1px solid var(--ddd-border-color, #b63333);
+          border-radius: var(--ddd-border-radius, 8px);
+          padding: var(--ddd-spacing-3);
+          max-width: 300px;
+          text-align: center;
         }
 
         img {
@@ -65,19 +71,13 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
         height: auto;
         }
 
-        .wrapper{
-          display: grid;
-          place-items: center;
-          padding: 6px;
-          margin: 10px;
-          border: 5px solid;
-          border-radius: 10px;
-          border-color: white;
-        }
-
         .title{
           align-content: center;
           padding:6px;
+        }
+
+        .image-container{
+          background-color:blue; //the card bg
         }
     `];
   }
@@ -85,13 +85,10 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html`
-      <div class="wrapper">
-        <h2>What campus is this</h2>
-        <img src=${this.image}>
-        <h2 class="title">${this.title}</h2>
-        <p>${this.desc}</p>
-        <p>${this.link}</p>
-      </div>
+      <div class="image-container">
+        <img src="${this.image}" alt="${this.title || "Card image"}"/></div>
+      <div class="title-bar">${this.title}</div>
+      <div class="description">${this.desc}</div>
       `;
   } 
 
