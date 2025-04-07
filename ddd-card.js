@@ -45,9 +45,9 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
-      link: {type: String},
-      image: {type:String},
-      desc: {type:String}
+      link: { type: String },
+      image: { type: String },
+      desc: { type: String }
     };
   }
 
@@ -55,41 +55,72 @@ export class DddCard extends DDDSuper(I18NMixin(LitElement)) {
   static get styles() {
     return [super.styles,
     css`
-        .host{
+        :host {
+          display: inline-flex;
+          flex-direction:column;
+          /* background: white; */
+          border-radius: 8px;
+          box-shadow: 0 4px 18px rgba(0,0,0,0.6);
+          overflow: hidden;
+          max-width: 400px;
+          min-width:300px;
+        }
+
+        .img {
+          width: 100%;
+          height: 200px;
+          /* object-fit: cover; */
+          margin: 0;
+          padding: 0;
+        }
+
+        .title-bar {
+          font-size: 1.5rem;
+          font-weight: bold;
+          padding: 1rem 1rem 0.5rem;
+          color: #1E407C;
+        }
+
+        .description {
+          padding: 0 1rem 1rem;
+          color: black;
+          line-height: 1.4;
+        }
+
+        .explore-button {
           display: block;
-          border: 1px solid var(--ddd-border-color, #b63333);
-          border-radius: var(--ddd-border-radius, 8px);
-          padding: var(--ddd-spacing-3);
-          max-width: 300px;
+          background: blue; 
+          color: white; /* Changed text color to white for better contrast */
           text-align: center;
+          padding: 12px 16px 12px 24px;
+          border-radius: 4px;
+          font-weight: 5
+          0;
         }
 
-        img {
-        display: flex;
-        padding: 16px;
-        max-width: 200px;
-        height: auto;
+        .explore-button:hover {
+          background: #15325F;
+          color:white;
         }
 
-        .title{
-          align-content: center;
-          padding:6px;
+        .below-img{
+          padding:5px;
         }
 
-        .image-container{
-          background-color:blue; //the card bg
-        }
     `];
   }
 
   // Lit render the HTML
   render() {
     return html`
-      <div class="image-container">
-        <img src="${this.image}" alt="${this.title || "Card image"}"/></div>
-      <div class="title-bar">${this.title}</div>
-      <div class="description">${this.desc}</div>
-      `;
+      <img src="${this.image}" alt="${this.title || "Campus image"}"/>
+      <div style="padding:5px; background-color:#15325F;"></div>
+      <div class="below-img">
+        <div class="title-bar">${this.title}</div>
+        <div class="description">${this.desc}</div>
+        <a href="${this.link}" class="explore-button">Explore ></a>
+      </div>
+    `;
   } 
 
   /**

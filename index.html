@@ -12,6 +12,18 @@
       margin: 0;
       padding: 0;
     }
+
+    :host{
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: var(--ddd-spacing-3);
+          border: 1px solid var(--ddd-border-color, green);
+          padding: var(--ddd-spacing-3);
+          border-radius: 4px;
+          width: 100%;
+          box-sizing: border-box;
+      }
+
     #demo {
       margin: var(--ddd-spacing-2);
     }
@@ -37,10 +49,13 @@
     <h2>Default</h2>
     <ddd-card-list>
       <ddd-card image="https://images.ctfassets.net/ni9rh5nu0d99/1paFaX2Dc7iHh9Z6K7mIim/1427b9970ff21dd9c8a770067638efc1/abington-02.jpg?fm=webp&w=750&q=75" 
-        title="Abington" link="https://psu.edu.com" desc="Hello apa ni">
+        title="Abington" link="https://psu.edu" desc="Close to Philadelphia, Penn State Abington’s suburban campus offers bachelor's degrees, athletics, and a diverse student community.">
       </ddd-card>
       <ddd-card image="https://images.ctfassets.net/ni9rh5nu0d99/6oBUNrVTNPJaoE9ahnVX2E/2c655bdcf28befdf81d5a24248a9dca5/altoona-01.jpg?fm=webp&w=750&q=75" 
-        title="Altoona" link="https://psu.edu.com">
+        title="Altoona" link="https://psu.edu" desc="In central Pennsylvania close to University Park, Penn State Altoona offers the appeal of a small college with the prestige of a major research university.">
+      </ddd-card>
+      <ddd-card image="https://images.ctfassets.net/ni9rh5nu0d99/C6YPZMqHyRaPeRrVTun8k/1ca61866afa1b3d903944a38ea34cecc/beaver-01.jpg?fm=webp&w=1080&q=75" 
+        title="Beaver" link="https://psu.edu" desc="Situated on one hundred acres, Penn State Beaver offers several bachelor's degrees, on-campus housing, and varsity sports, all within easy reach of Pittsburgh.">
       </ddd-card>
     </ddd-card-list>
   </div>

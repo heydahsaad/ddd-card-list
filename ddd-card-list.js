@@ -56,20 +56,30 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
 
       :host{
           display: grid;
-          border: 1px solid var(--ddd-border-color, green); //ini apa sia
-          border-radius: var(--ddd-border-radius, 8px);
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: var(--ddd-spacing-3);
+          border: 1px solid var(--ddd-border-color, green);
           padding: var(--ddd-spacing-3);
+          border-radius: 4px;
+          width: 100%;
+          box-sizing: border-box;
       }
 
       .wrapper {
+        display:flex;
+        gap: 2rem;
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
         background-color: white; //the whole damn background
+        border-radius: 4px; //ini apa sia
       }
 
-      /* h3 span {
-        font-size: var(--ddd-card-list-label-font-size, var(--ddd-font-size-s)); */
-      /* } */
+      ::slotted(ddd-card) {
+        flex: 0 1 350px; /* This allows cards to maintain width but wrap when needed */
+        margin: 0;
+      }
+      
+
     `];
   }
 
