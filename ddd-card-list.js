@@ -57,9 +57,8 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
       :host{
           display: block;
           gap: var(--ddd-spacing-3);
-          border: 1px solid var(--ddd-border-color, green);
+          /* border: 1px solid var(--ddd-border-color, green); */
           padding: var(--ddd-spacing-3);
-          border-radius: 4px;
           width: 100%;
           min-width: 800px;
       }
@@ -71,9 +70,9 @@ export class DddCardList extends DDDSuper(I18NMixin(LitElement)) {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
         background-color: var(--ddd-theme-accent); //the whole background
-        border-radius: 80px; //ini apa sia
         justify-items: center;
         align-items: center;
+        border-radius: 8px;
       }
 
       /* ::slotted(ddd-card) {

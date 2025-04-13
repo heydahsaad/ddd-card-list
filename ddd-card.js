@@ -24,20 +24,6 @@ export class DddCard extends DDDPulseEffectSuper(I18NMixin(DDD)) {
     this.link ="";
     this.desc="";
     this.title = "";
-
-
-    // this.t = this.t || {};
-    // this.t = {
-    //   ...this.t,
-    //   title: "Title",
-    // };
-    // this.registerLocalization({
-    //   context: this,
-    //   localesPath:
-    //     new URL("./locales/ddd-card-list.ar.json", import.meta.url).href +
-    //     "/../",
-    //   locales: ["ar", "es", "hi", "zh"],
-    // });
   }
 
   // Lit reactive properties
@@ -58,13 +44,12 @@ export class DddCard extends DDDPulseEffectSuper(I18NMixin(DDD)) {
         :host {
           display: inline-flex;
           flex-direction:column;
-          //background: var(--ddd-theme-default-shrineLight); ;
-          /* background-color: var(--ddd-theme-primary, #caccd0); */
           border-radius: 8px;
           box-shadow: 0 2px 9px rgba(0,0,0,0.4);
           overflow: hidden;
           max-width: 400px;
           min-width: 300px;
+          background: var(--ddd-theme-accent);
         }
 
         img{
@@ -78,14 +63,14 @@ export class DddCard extends DDDPulseEffectSuper(I18NMixin(DDD)) {
         }
 
         .description {
-          color: var(--ddd-theme-default-potential70);
-          padding:10px 0px 10px 0px;
+          color: var(--ddd-theme-default-potentialMidnight);
+          padding: var(--ddd-spacing-1);
         }
 
         a.explore-button {
           display: block;
           text-align: center;
-          padding: 12px 16px 12px 24px;
+          padding: var(--ddd-spacing-3);
           border-radius: 4px;
           font-weight: 50px;
           background: var(--ddd-theme-default-beaverBlue);
@@ -93,20 +78,19 @@ export class DddCard extends DDDPulseEffectSuper(I18NMixin(DDD)) {
         }
 
         .explore-button:hover {
-          background: var(--ddd-theme-default-potential75);
+          background: var(--ddd-theme-primary);
           color:var(--ddd-theme-default-roarMaxlight);
           text-decoration: none;
         }
 
         .below-img{
-          padding:16px 16px 20px;
+          padding:var(--ddd-spacing-3);
           min-width:100px;
           min-height: 200px;
         }
 
         .card-wording{
           min-height:250px;
-          /* align-content: center; */
         }
 
     `];
