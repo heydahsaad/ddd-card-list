@@ -92,7 +92,6 @@ export class DddCard extends DDDPulseEffectSuper(I18NMixin(DDD)) {
         .card-wording{
           min-height:250px;
         }
-
     `];
   }
 
